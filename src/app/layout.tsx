@@ -1,10 +1,10 @@
 import type {Metadata} from "next";
-import {Zain} from "next/font/google";
+import { Nunito_Sans} from "next/font/google";
 import "./globals.css";
 
-const zain = Zain({
-    variable: "--font-zain",
-    weight: ["200", "300", "400", "700", "800", "900"],
+const nunito = Nunito_Sans({
+    variable: "--font-nunito",
+    weight: ["300", "400", "700", "800", "900"],
     subsets: ["latin"],
 });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${zain.variable}  antialiased`}>{children}</body>
+            <body className={`${nunito.variable}  antialiased`}>{children}</body>
         </html>
     );
 }
