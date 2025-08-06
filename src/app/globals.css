@@ -1,23 +1,73 @@
 @import "tailwindcss";
 
 @theme {
-    --font-nunito: var(--font-nunito);
+    --font-neosans: "NeoSans", sans-serif;
+    --font-lausane: "Lausane", sans-serif;
 }
 
 @layer components {
     .padding-x {
-       @apply px-6 md:px-12 2xl:px-20;
+        @apply px-6 md:px-12 2xl:px-20;
     }
 }
 
 body {
-    font-family: var(--font-nunito);
+    font-family: var(--font-lausane);
 }
 
 button {
     cursor: pointer;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     display: none;
+}
+
+@font-face {
+    font-family: "NeoSans";
+    src: url("/fonts/NeoSansPro.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lausane";
+    src: url("/fonts/lausane.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.gradient-background {
+  background: linear-gradient(100deg,#051268,#0d21a2,deepskyblue);
+  background-size: 180% 180%;
+  animation: gradient-animation 20s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.sticky-section {
+  position: relative;
+  height: 200vh; /* double height for scroll effect */
+}
+
+.sticky-inner {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+html {
+  scroll-behavior: auto;
 }

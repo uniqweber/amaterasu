@@ -20,7 +20,7 @@ export default function Button({variant = "bg", children = "invest with us", cla
 
     return (
         <motion.button
-            className={`relative  overflow-hidden ${variantStyles[variant]} rounded-3xl flex items-center h-14 pt-0.5 px-7 gap-3 ${className}`}
+            className={`relative  overflow-hidden ${variantStyles[variant]} font-neosans rounded-3xl flex items-center h-12 text-sm  px-7 gap-3 ${className}`}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             {...props}
@@ -28,7 +28,7 @@ export default function Button({variant = "bg", children = "invest with us", cla
             <motion.div
                 className={`size-2.5 mb-0.5 ${dotColor} rounded-full`}
                 animate={{
-                    x: isHovered ? 155 : 0,
+                    x: isHovered ? 140 : 0,
                 }}
                 transition={{
                     duration: 0.4,
@@ -38,7 +38,7 @@ export default function Button({variant = "bg", children = "invest with us", cla
             />
 
             <motion.span
-                className="block uppercase leading-none font-bold tracking-wider"
+                className="block uppercase leading-none tracking-widest"
                 animate={{
                     x: isHovered ? -20 : 0,
                     opacity: isHovered ? 0 : 1,
@@ -60,7 +60,7 @@ export default function Button({variant = "bg", children = "invest with us", cla
             </motion.span>
 
             <motion.span
-                className="absolute inset-0 pt-0.5 flex leading-none items-center justify-center uppercase font-bold tracking-wider"
+                className="absolute inset-0  flex leading-none text-sm items-center justify-center uppercase  tracking-widest"
                 animate={{
                     opacity: isHovered ? 1 : 0,
                     x: isHovered ? -8 : 20,

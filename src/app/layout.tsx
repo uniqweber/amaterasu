@@ -1,12 +1,6 @@
 import type {Metadata} from "next";
-import { Nunito_Sans} from "next/font/google";
 import "./globals.css";
-
-const nunito = Nunito_Sans({
-    variable: "--font-nunito",
-    weight: ["300", "400", "700", "800", "900"],
-    subsets: ["latin"],
-});
+import LenisWrapper from "@/components/ui/lenis-wrapper";
 
 export const metadata: Metadata = {
     title: "Amaterasu - Empower your mental health journey",
@@ -20,7 +14,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${nunito.variable}  antialiased`}>{children}</body>
+            <body className={`  antialiased`}>
+                <LenisWrapper>{children}</LenisWrapper>
+            </body>
         </html>
     );
 }
