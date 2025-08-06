@@ -65,7 +65,7 @@ const EnterAnimation = ({handleEnter}:{handleEnter: () => void}) => {
     const circlePositions = generateCirclePositions();
 
     return (
-        <div ref={ref} className="relative">
+        <div ref={ref} className="relative scale-85 md:scale-100">
             <svg width="600" height="600" viewBox="-350 -350 700 700" className="w-full h-full overflow-visible">
                 {circlePositions.map((circle, index) => {
                     const isCenter = index === circlePositions.length - 1;

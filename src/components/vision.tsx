@@ -15,7 +15,7 @@ export default function Vision() {
             data-border-color="border-black/20"
             data-theme-logo="invert-0"
         >
-            <div className="text-center py-40">
+            <div className="text-center py-20 lg:py-40">
                 <h4 className="font-neosans flex items-center gap-3 tracking-[4px] text-blue-900  justify-center">
                     <span className="inline-block size-2 bg-emerald-300 rounded-full"></span>
                     Vision
@@ -26,7 +26,7 @@ export default function Vision() {
                     delay={50}
                     animateBy="words"
                     direction="bottom"
-                    className="text-5xl text-center flex items-center justify-center space-y-2 max-w-screen-lg mx-auto mt-20 padding-x   text-blue-900 "
+                    className="text-4xl lg:text-5xl  flex items-center lg:justify-center space-y-2 max-w-screen-lg mx-auto mt-20 padding-x   text-blue-900 "
                 />
             </div>
         </div>

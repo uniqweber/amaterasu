@@ -53,7 +53,7 @@ export default function Hero() {
 
             {/* Image with elegant motion */}
             <motion.div
-                className="h-full w-1/2 mx-auto object-cover absolute z-10 left-1/2 -translate-x-1/2 pointer-events-none"
+                className="h-full hidden lg:block w-1/2 mx-auto object-cover absolute z-10 left-1/2 -translate-x-1/2 pointer-events-none"
                 style={{
                     x: translateX,
                     y: translateY,
@@ -62,17 +62,20 @@ export default function Hero() {
             >
                 <Image src="/hero.png" alt="hero" width={0} height={0} sizes="200vw" className="h-[110vh] w-full object-cover" priority />
             </motion.div>
+            <motion.div className="h-full w-full lg:hidden  mx-auto object-cover absolute z-10 left-1/2 -translate-x-1/2 pointer-events-none">
+                <Image src="/hero.png" alt="hero" width={0} height={0} sizes="200vw" className="h-screen w-full object-cover" priority />
+            </motion.div>
 
             {/* Foreground Text Content */}
             <div className="relative z-20 padding-x size-full flex items-center justify-center">
                 <div className="w-full">
-                    <div className="w-1/2">
-                        <div className="flex items-center flex-col text-right">
+                    <div className="md:w-1/2 pb-10 md:pb-0">
+                        <div className="flex items-center flex-col md:text-right">
                             <motion.div
                                 whileInView={{y: 0}}
                                 initial={{y: 100}}
                                 transition={{duration: 1, ease: "easeOut"}}
-                                className="space-y-2 text-[4.2vw] pointer-events-none w-full 2xl:text-[3.5vw] leading-none font-medium text-white"
+                                className="space-y-2 text-4xl lg:text-[4.2vw] pointer-events-none w-full 2xl:text-[3.5vw] leading-none font-medium text-white"
                             >
                                 <span className="block text-shadow-2xs">Empower your </span>
                                 <span className="block text-shadow-2xs"> choices with</span>
@@ -82,7 +85,7 @@ export default function Hero() {
                                 whileInView={{y: 0}}
                                 initial={{y: 100}}
                                 transition={{duration: 1, ease: "easeOut"}}
-                                className="w-full flex items-center justify-end mt-10"
+                                className="w-full flex items-center md:justify-end mt-10"
                             >
                                 <Button>Invest with us</Button>
                             </motion.div>
