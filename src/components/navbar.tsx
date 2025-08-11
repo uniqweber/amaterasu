@@ -113,48 +113,66 @@ export default function Navbar() {
     }, []);
 
     return (
-        <header className={`fixed inset-x-0 top-0 z-50 flex justify-between py-6 padding-x transition-all duration-500 ${navbarTheme.textColor}`}>
-            <Image src="/logo-black.png" alt="logo" width={40} height={40} className={`size-12 ${navbarTheme.logo} rounded-full object-cover`} />
+        <>
+            <style jsx>{`
+                @keyframes sineWave {
+                    0% {
+                        d: path("M10,25 Q30,-5 50,25 Q70,55 90,25");
+                    }
+                    50% {
+                        d: path("M10,25 Q30,55 50,25 Q70,-5 90,25");
+                    }
+                    100% {
+                        d: path("M10,25 Q30,-5 50,25 Q70,55 90,25");
+                    }
+                }
 
-            <Menu navbarTheme={navbarTheme} />
+                @keyframes waveSlide {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    50% {
+                        transform: translateX(-3px);
+                    }
+                    100% {
+                        transform: translateX(0);
+                    }
+                }
 
-            {/* floating button with music toggle */}
-            <div className="fixed right-0 bottom-10 padding-x z-30">
-                <div
-                    onClick={toggleMusic}
-                    className={`size-15 rounded-full border flex items-center justify-center cursor-pointer transition-all duration-500 hover:scale-110 ${navbarTheme.buttonBorder}`}
-                    title={isPlaying ? "Recording..." : "Play Music"}
-                >
-                    {isPlaying ? (
-                        // Recording animation - animated bars
-                        <div className="flex items-end justify-center gap-px">
-                            <span
-                                className={`w-0.5 bg-current rounded-full transition-all duration-300 ${navbarTheme.buttonBg} animate-pulse`}
-                                style={{height: "8px", animationDelay: "0ms"}}
-                            />
-                            <span
-                                className={`w-0.5 bg-current rounded-full transition-all duration-300 ${navbarTheme.buttonBg} animate-pulse`}
-                                style={{height: "12px", animationDelay: "150ms"}}
-                            />
-                            <span
-                                className={`w-0.5 bg-current rounded-full transition-all duration-300 ${navbarTheme.buttonBg} animate-pulse`}
-                                style={{height: "6px", animationDelay: "300ms"}}
-                            />
-                            <span
-                                className={`w-0.5 bg-current rounded-full transition-all duration-300 ${navbarTheme.buttonBg} animate-pulse`}
-                                style={{height: "10px", animationDelay: "450ms"}}
-                            />
-                            <span
-                                className={`w-0.5 bg-current rounded-full transition-all duration-300 ${navbarTheme.buttonBg} animate-pulse`}
-                                style={{height: "4px", animationDelay: "600ms"}}
-                            />
-                        </div>
-                    ) : (
-                        // Default line (same as before)
-                        <span className={`inline-block h-px w-4 rounded-full transition-all duration-300 ${navbarTheme.buttonBg}`} />
-                    )}
+                .sine-wave-animate {
+                    animation: sineWave 2s ease-in-out infinite, waveSlide 2s ease-in-out infinite;
+                }
+            `}</style>
+
+            <header className={`fixed inset-x-0 top-0 z-50 flex justify-between py-6 padding-x transition-all duration-500 ${navbarTheme.textColor}`}>
+                <Image src="/logo-black.png" alt="logo" width={40} height={40} className={`size-12 ${navbarTheme.logo} rounded-full object-cover`} />
+
+                <Menu navbarTheme={navbarTheme} />
+
+                {/* floating button with music toggle */}
+                <div className="fixed right-0 bottom-10 padding-x z-30">
+                    <div
+                        onClick={toggleMusic}
+                        className={`size-15 rounded-full border flex items-center justify-center cursor-pointer transition-all duration-500 hover:scale-110 ${navbarTheme.buttonBorder}`}
+                        title={isPlaying ? "Recording..." : "Play Music"}
+                    >
+                        {isPlaying ? (
+                            <svg viewBox="0 0 100 50" className="size-6 " xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10,25 Q30,15 50,25 Q70,35 90,25"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="3"
+                                    strokeLinecap="round"
+                                    className={`sine-wave-animate`}
+                                />
+                            </svg>
+                        ) : (
+                            <span className={`inline-block h-px w-4 rounded-full transition-all duration-300 ${navbarTheme.buttonBg}`} />
+                        )}
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </>
     );
 }

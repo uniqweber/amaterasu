@@ -2,7 +2,7 @@
 import React, {useRef, useEffect} from "react";
 import {motion, Variants, useInView, useAnimation} from "framer-motion";
 
-const Circles: React.FC = () => {
+const Circles = ({title}: {title: string}) => {
     const ref = useRef(null);
     const inView = useInView(ref, {once: false});
     const controls = useAnimation();
@@ -65,7 +65,7 @@ const Circles: React.FC = () => {
     const circlePositions = generateCirclePositions();
 
     return (
-        <div ref={ref} className="relative">
+        <div ref={ref} className="relative ">
             <svg width="600" height="600" viewBox="-350 -350 700 700" className="w-full h-full overflow-visible">
                 {circlePositions.map((circle, index) => {
                     const isCenter = index === circlePositions.length - 1;
@@ -88,12 +88,12 @@ const Circles: React.FC = () => {
             </svg>
 
             <motion.div
-                className="absolute uppercase tracking-widest font-neosans inset-0 flex items-center justify-center"
+                className="absolute uppercase text-extrasmall font-neosans inset-0 flex items-center justify-center"
                 variants={textVariants}
                 initial="hidden"
                 animate={controls}
             >
-                human
+                {title}
             </motion.div>
         </div>
     );

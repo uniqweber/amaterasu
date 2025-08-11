@@ -17,11 +17,11 @@ export default function Footer() {
                             whileInView={{y: 0}}
                             initial={{y: 50}}
                             transition={{duration: 1, ease: "easeOut"}}
-                            className=" space-y-2 text-4xl lg:text-[4.2vw] pointer-events-none w-full 2xl:text-[3.5vw] leading-none font-medium text-white"
+                            className="space-y-2 text-4xl lg:text-[62px] font-sans font-light -tracking-[2px] pointer-events-none w-full  leading-none text-white"
                         >
                             <span className="block text-shadow-2xs">Empower your </span>
-                            <span className="block text-shadow-2xs"> choices with</span>
-                            <span className="block text-shadow-2xs">universal wisdom</span>
+                            <span className="block text-shadow-2xs"> choices with universal</span>
+                            <span className="block text-shadow-2xs"> wisdom</span>
                         </motion.div>
                         <motion.div
                             whileInView={{y: 0}}
@@ -30,27 +30,31 @@ export default function Footer() {
                             className="flex flex-col md:flex-row gap-5 mt-10 "
                         >
                             <div>
-                                <Button>Invest with us</Button>
+                                <Button xValue={110}>Invest with us</Button>
                             </div>
                             <div>
-                                <Button variant="outline">Start Journey</Button>
+                                <Button xValue={110} variant="outline">
+                                    Start Journey
+                                </Button>
                             </div>
                         </motion.div>
                     </div>
 
                     <motion.div whileInView={{y: 0}} initial={{y: 50}} transition={{duration: 1, ease: "easeOut"}} className="lg:pl-40">
-                        <div className="space-y-2 text-4xl lg:text-[4.2vw] pointer-events-none w-full 2xl:text-[3.5vw] leading-none font-medium text-white">
-                            <span>Vision</span>
+                        <div className="space-y-2 text-4xl lg:text-[51px] font-sans font-light -tracking-[2px] pointer-events-none w-full  leading-none text-white">
+                            <span>Vision</span> <br />
+                            <span className="text-white/40">Contact</span>
                         </div>
-                        <div className="uppercase text-white/60 space-y-1 font-neosans  tracking-[3px] text-sm mt-10">
+                        <div className="uppercase text-white/60 space-y-1 font-neosans text-extrasmall mt-10">
                             <span className="block hover:text-white cursor-pointer">Twitter</span>
                             <span className="block hover:text-white cursor-pointer">Linkedin</span>
                             <span className="block hover:text-white cursor-pointer">Email</span>
                         </div>
                     </motion.div>
+                    
                 </div>
             </div>
-            <p className="text-white/60 text-sm tracking-widest absolute left-0 bottom-0 lg:text-lg padding-x pb-10 ">
+            <p className="text-white/60 text-sm tracking-widest absolute left-0 bottom-0  padding-x pb-10 ">
                 ©2025 - Amaterasu, empowering your mental health with quantum precision.
             </p>
         </div>

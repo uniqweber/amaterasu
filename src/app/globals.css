@@ -11,6 +11,12 @@
     }
 }
 
+@layer utilities {
+  .text-extrasmall {
+    @apply text-[10px] tracking-[1.6px];
+  }
+}
+
 body {
     font-family: var(--font-lausane);
 }
@@ -38,9 +44,9 @@ button {
 }
 
 .gradient-background {
-  background: linear-gradient(100deg,#051268,#0d21a2,deepskyblue);
-  background-size: 180% 180%;
-  animation: gradient-animation 20s ease infinite;
+  background: linear-gradient(100deg, deepskyblue, #040A2E, #040A2E);
+  background-size: 150% 150%;
+  animation: gradient-animation 15s ease infinite;
 }
 
 @keyframes gradient-animation {
@@ -68,6 +74,24 @@ button {
   align-items: center;
   justify-content: center;
 }
+
+@keyframes bob {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-bob {
+  animation: bob 2s ease-in-out infinite;
+}
+
+
 html {
   scroll-behavior: auto;
 }

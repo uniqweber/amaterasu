@@ -9,9 +9,11 @@ interface ButtonProps {
     children?: React.ReactNode;
     className?: string;
     dotColor?: string;
+    xValue?: number;
+    textValue?: number;
 }
 
-export default function Button({variant = "bg", children = "invest with us", className = "", dotColor = "bg-green-400", ...props}: ButtonProps) {
+export default function Button({variant = "bg", children = "invest with us", className = "", dotColor = "bg-green-400", xValue=140, textValue=20, ...props}: ButtonProps) {
     const [isHovered, setIsHovered] = useState(false);
     const variantStyles = {
         bg: "bg-gradient-to-r from-[#314097] to-[#5061BE] text-white",
@@ -20,15 +22,15 @@ export default function Button({variant = "bg", children = "invest with us", cla
 
     return (
         <motion.button
-            className={`relative  overflow-hidden ${variantStyles[variant]} font-neosans rounded-3xl flex items-center h-12 text-sm  px-7 gap-3 ${className}`}
+            className={`relative  overflow-hidden ${variantStyles[variant]} font-neosans rounded-[20px] flex items-center h-12 text-extrasmall   px-7 gap-3 ${className}`}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             {...props}
         >
             <motion.div
-                className={`size-2.5 mb-0.5 ${dotColor} rounded-full`}
+                className={`size-1.5 animate-pulse  ${dotColor} rounded-full`}
                 animate={{
-                    x: isHovered ? 140 : 0,
+                    x: isHovered ? xValue : 0,
                 }}
                 transition={{
                     duration: 0.4,
@@ -38,9 +40,9 @@ export default function Button({variant = "bg", children = "invest with us", cla
             />
 
             <motion.span
-                className="block uppercase leading-none tracking-widest"
+                className="block uppercase leading-none"
                 animate={{
-                    x: isHovered ? -20 : 0,
+                    x: isHovered ? -textValue : 0,
                     opacity: isHovered ? 0 : 1,
                 }}
                 transition={{
@@ -60,7 +62,7 @@ export default function Button({variant = "bg", children = "invest with us", cla
             </motion.span>
 
             <motion.span
-                className="absolute inset-0  flex leading-none text-sm items-center justify-center uppercase  tracking-widest"
+                className="absolute inset-0  flex leading-none text-extrasmall items-center justify-center uppercase  "
                 animate={{
                     opacity: isHovered ? 1 : 0,
                     x: isHovered ? -8 : 20,

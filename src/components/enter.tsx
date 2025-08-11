@@ -88,7 +88,7 @@ const EnterAnimation = ({handleEnter}:{handleEnter: () => void}) => {
             </svg>
 
             <motion.button
-                className="absolute uppercase tracking-widest font-neosans inset-0 flex items-center justify-center"
+                className="absolute uppercase text-extrasmall font-neosans inset-0 flex items-center justify-center"
                 variants={textVariants}
                 initial="hidden"
                 animate={controls}

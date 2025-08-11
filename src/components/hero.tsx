@@ -75,11 +75,11 @@ export default function Hero() {
                                 whileInView={{y: 0}}
                                 initial={{y: 100}}
                                 transition={{duration: 1, ease: "easeOut"}}
-                                className="space-y-2 text-4xl lg:text-[4.2vw] pointer-events-none w-full 2xl:text-[3.5vw] leading-none font-medium text-white"
+                                className="space-y-2 text-4xl lg:text-[79px] font-sans font-light -tracking-[2px] pointer-events-none w-full  leading-none text-white"
                             >
                                 <span className="block text-shadow-2xs">Empower your </span>
-                                <span className="block text-shadow-2xs"> choices with</span>
-                                <span className="block text-shadow-2xs">universal wisdom</span>
+                                <span className="block text-shadow-2xs"> choices with universal</span>
+                                <span className="block text-shadow-2xs"> wisdom</span>
                             </motion.div>
                             <motion.div
                                 whileInView={{y: 0}}
@@ -87,7 +87,7 @@ export default function Hero() {
                                 transition={{duration: 1, ease: "easeOut"}}
                                 className="w-full flex items-center md:justify-end mt-10"
                             >
-                                <Button>Invest with us</Button>
+                                <Button xValue={145}>Start your journey</Button>
                             </motion.div>
                         </div>
                     </div>
@@ -95,12 +95,13 @@ export default function Hero() {
 
                 {/* Scroll-to-explore text */}
                 <motion.div
-                    className="absolute left-0 padding-x pointer-events-none bottom-10 uppercase text-sm flex items-center gap-2 font-semibold tracking-widest"
+                    className="absolute left-0 padding-x pointer-events-none bottom-10 uppercase text-extrasmall flex items-center gap-2 font-semibold tracking-widest"
                     initial={{opacity: 1, y: 0}}
                     animate={hideScrollHint ? {opacity: 0, y: 20} : {opacity: 1, y: 0}}
                     transition={{duration: 0.4}}
                 >
-                    <span className="pt-0.5">Scroll To Explore</span> <span className="font-serif">&#8595;</span>
+                    <span className="pt-1 font-neosans text-white/50">Scroll To Explore</span>{" "}
+                    <span className="font-serif text-white/50 text-base">&#8595;</span>
                 </motion.div>
 
                 {/* Tagline bottom right */}
@@ -108,9 +109,9 @@ export default function Hero() {
                     whileInView={{y: 0}}
                     initial={{y: 100}}
                     transition={{duration: 1, ease: "easeOut"}}
-                    className="max-w-sm absolute padding-x pointer-events-none w-full right-0 bottom-40 pl-0 text-right text-xl"
+                    className="w-max  absolute padding-x pointer-events-none  right-0 bottom-40  text-[15px] tracking-wider"
                 >
-                    Bridging cycles and conscious decision - guiding you to act with clarity at the right moment in life
+                    Bridging cycles and conscious <br /> decision - guiding you to act with <br /> clarity at the right moment in life
                 </motion.p>
             </div>
         </div>
