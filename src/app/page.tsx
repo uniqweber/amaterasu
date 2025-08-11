@@ -21,7 +21,7 @@ export default function Home() {
             setShowMain(true);
         }, 1200); // Matches animation duration
     };
-
+// new days
     return (
         <>
             <AnimatePresence>
