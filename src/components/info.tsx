@@ -47,7 +47,13 @@ export default function Info() {
     const {title, subtitle, Visual, smallTitle} = sections[currentIndex];
 
     return (
-        <div data-navbar-theme="dark" data-button-theme="dark" ref={containerRef} className="relative  h-[300vh] gradient-background">
+        <section
+           
+            data-navbar-theme="dark"
+            data-button-theme="dark"
+            ref={containerRef}
+            className="relative  h-[300vh] gradient-background"
+        >
             <div className="sticky top-0 h-screen text-white">
                 <div className="relative z-20 h-full flex items-end padding-x">
                     {/* === Right-side visuals === */}
@@ -75,6 +81,6 @@ export default function Info() {
                     </motion.div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

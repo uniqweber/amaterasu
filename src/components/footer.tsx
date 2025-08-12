@@ -4,7 +4,7 @@ import Button from "./ui/button";
 
 export default function Footer() {
     return (
-        <div
+        <section
             id="footer"
             data-navbar-theme="dark"
             data-button-theme="dark"
@@ -43,7 +43,7 @@ export default function Footer() {
                     <motion.div whileInView={{y: 0}} initial={{y: 50}} transition={{duration: 1, ease: "easeOut"}} className="lg:pl-40">
                         <div className="space-y-2 text-4xl lg:text-[51px] font-sans font-light -tracking-[2px] pointer-events-none w-full  leading-none text-white">
                             <span>Vision</span> <br />
-                            <span className="text-white/40">Contact</span>
+                            <span className="text-white/40">Doris Rüggeberg</span>
                         </div>
                         <div className="uppercase text-white/60 space-y-1 font-neosans text-extrasmall mt-10">
                             <span className="block hover:text-white cursor-pointer">Twitter</span>
@@ -51,12 +51,11 @@ export default function Footer() {
                             <span className="block hover:text-white cursor-pointer">Email</span>
                         </div>
                     </motion.div>
-                    
                 </div>
             </div>
             <p className="text-white/60 text-sm tracking-widest absolute left-0 bottom-0  padding-x pb-10 ">
                 ©2025 - Amaterasu, empowering your mental health with quantum precision.
             </p>
-        </div>
+        </section>
     );
 }

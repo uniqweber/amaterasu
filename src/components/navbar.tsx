@@ -2,6 +2,7 @@
 import {useEffect, useRef, useState} from "react";
 import Menu from "./ui/menu";
 import Image from "next/image";
+import Link from "next/link";
 
 interface NavbarTheme {
     textColor: string;
@@ -114,38 +115,16 @@ export default function Navbar() {
 
     return (
         <>
-            <style jsx>{`
-                @keyframes sineWave {
-                    0% {
-                        d: path("M10,25 Q30,-5 50,25 Q70,55 90,25");
-                    }
-                    50% {
-                        d: path("M10,25 Q30,55 50,25 Q70,-5 90,25");
-                    }
-                    100% {
-                        d: path("M10,25 Q30,-5 50,25 Q70,55 90,25");
-                    }
-                }
-
-                @keyframes waveSlide {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    50% {
-                        transform: translateX(-3px);
-                    }
-                    100% {
-                        transform: translateX(0);
-                    }
-                }
-
-                .sine-wave-animate {
-                    animation: sineWave 2s ease-in-out infinite, waveSlide 2s ease-in-out infinite;
-                }
-            `}</style>
-
             <header className={`fixed inset-x-0 top-0 z-50 flex justify-between py-6 padding-x transition-all duration-500 ${navbarTheme.textColor}`}>
-                <Image src="/logo-black.png" alt="logo" width={40} height={40} className={`size-12 ${navbarTheme.logo} rounded-full object-cover`} />
+                <Link href="/">
+                    <Image
+                        src="/logo-black.png"
+                        alt="logo"
+                        width={40}
+                        height={40}
+                        className={`size-12 ${navbarTheme.logo} rounded-full object-cover`}
+                    />
+                </Link>
 
                 <Menu navbarTheme={navbarTheme} />
 

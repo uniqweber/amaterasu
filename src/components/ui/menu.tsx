@@ -1,6 +1,7 @@
 "use client";
 import {useState} from "react";
 import Button from "./button";
+import Link from "next/link";
 
 export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bgColor: string; borderColor: string}}) {
     const [menu, setMenu] = useState(false);
@@ -47,10 +48,7 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
                 `}
             >
                 <div className={`flex p-10 flex-col h-full  ease-in-out  duration-500 ${menu ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`}>
-                    <button
-                        onClick={toggleMenu}
-                        className="flex items-center gap-3  text-slate-600 hover:text-slate-800 transition-colors group"
-                    >
+                    <button onClick={toggleMenu} className="flex items-center gap-3  text-slate-600 hover:text-slate-800 transition-colors group">
                         <span className="text-extrasmall uppercase font-medium text-blue-950  font-neosans">CLOSE</span>
                         <span className="text-2xl block font-serif pb-0.5 text-black/50">&#8594;</span>
                     </button>
@@ -60,13 +58,13 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
                             menu ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"
                         }`}
                     >
-                        <div className="space-y-2 text-4xl lg:text-[51px] font-sans font-light -tracking-[2px] pointer-events-none w-full  leading-none text-white">
-                            <a href="#hero" className="block text-blue-900 leading-none mb-2">
+                        <div className="space-y-2 text-4xl  -tracking-[2px]   w-full  leading-none text-white">
+                            <Link href="/" className="block text-blue-900 leading-none mb-2">
                                 Vision
-                            </a>
-                            <a href="#footer" className="block text-blue-900/50 leading-none">
-                                Contact
-                            </a>
+                            </Link>
+                            <Link href="/doris-rueggeberg" className="block text-blue-900/50 leading-none">
+                                Doris Rüggeberg
+                            </Link>
                         </div>
 
                         <div className="space-y-2 font-neosans">
@@ -80,8 +78,9 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
                                 </a>
                             ))}
                         </div>
-
-                        <Button />
+                        <Link href="/contact">
+                            <Button xValue={110} />
+                        </Link>
                     </div>
                 </div>
             </div>

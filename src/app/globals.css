@@ -12,9 +12,9 @@
 }
 
 @layer utilities {
-  .text-extrasmall {
-    @apply text-[10px] tracking-[1.6px];
-  }
+    .text-extrasmall {
+        @apply text-[10px] tracking-[1.6px];
+    }
 }
 
 body {
@@ -44,54 +44,72 @@ button {
 }
 
 .gradient-background {
-  background: linear-gradient(100deg, deepskyblue, #040A2E, #040A2E);
-  background-size: 150% 150%;
-  animation: gradient-animation 15s ease infinite;
+    background: linear-gradient(100deg, deepskyblue, #040a2e, #040a2e);
+    background-size: 150% 150%;
+    animation: gradient-animation 15s ease infinite;
 }
 
 @keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .sticky-section {
-  position: relative;
-  height: 200vh; /* double height for scroll effect */
+    position: relative;
+    height: 200vh; /* double height for scroll effect */
 }
 
 .sticky-inner {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@keyframes bob {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(2px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+@keyframes sineWave {
+    0% {
+        d: path("M10,25 Q30,-5 50,25 Q70,55 90,25");
+    }
+    50% {
+        d: path("M10,25 Q30,55 50,25 Q70,-5 90,25");
+    }
+    100% {
+        d: path("M10,25 Q30,-5 50,25 Q70,55 90,25");
+    }
 }
 
-.animate-bob {
-  animation: bob 2s ease-in-out infinite;
+@keyframes waveSlide {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.sine-wave-animate {
+    animation: sineWave 2s ease-in-out infinite, waveSlide 2s ease-in-out infinite;
+}
+
+
+.swiper-slide-prev ,
+.swiper-slide-next  {
+  filter: blur(2.5px);
 }
 
 
 html {
-  scroll-behavior: auto;
+    scroll-behavior: auto;
 }

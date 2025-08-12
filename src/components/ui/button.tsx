@@ -16,13 +16,13 @@ interface ButtonProps {
 export default function Button({variant = "bg", children = "invest with us", className = "", dotColor = "bg-green-400", xValue=140, textValue=20, ...props}: ButtonProps) {
     const [isHovered, setIsHovered] = useState(false);
     const variantStyles = {
-        bg: "bg-gradient-to-r from-[#314097] to-[#5061BE] text-white",
+        bg: "bg-gradient-to-l from-[#314097] to-[#5061BE] text-white",
         outline: "bg-transparent text-white border border-white/30",
     };
 
     return (
         <motion.button
-            className={`relative  overflow-hidden ${variantStyles[variant]} font-neosans rounded-[20px] flex items-center h-12 text-extrasmall   px-7 gap-3 ${className}`}
+            className={`relative  overflow-hidden ${variantStyles[variant]} font-neosans rounded-[22px] flex items-center h-12 text-extrasmall   px-7 gap-3 ${className}`}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             {...props}

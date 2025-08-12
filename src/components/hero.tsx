@@ -45,7 +45,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <div id="hero" data-navbar-theme="dark" ref={heroRef} className="h-screen relative text-white overflow-hidden">
+        <section id="hero" data-navbar-theme="dark" ref={heroRef} className="h-screen relative text-white overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0">
                 <Background color="#22d3ee" speed={2} scale={0.6} noiseIntensity={0} rotation={5.78} />
@@ -75,7 +75,7 @@ export default function Hero() {
                                 whileInView={{y: 0}}
                                 initial={{y: 100}}
                                 transition={{duration: 1, ease: "easeOut"}}
-                                className="space-y-2 text-4xl lg:text-[79px] font-sans font-light -tracking-[2px] pointer-events-none w-full  leading-none text-white"
+                                className="space-y-2 text-4xl lg:text-[65px] font-sans font-light -tracking-[2px] pointer-events-none w-full  leading-none text-white"
                             >
                                 <span className="block text-shadow-2xs">Empower your </span>
                                 <span className="block text-shadow-2xs"> choices with universal</span>
@@ -109,11 +109,11 @@ export default function Hero() {
                     whileInView={{y: 0}}
                     initial={{y: 100}}
                     transition={{duration: 1, ease: "easeOut"}}
-                    className="w-max  absolute padding-x pointer-events-none  right-0 bottom-40  text-[15px] tracking-wider"
+                    className="w-max  absolute padding-x pointer-events-none left-0 md:left-auto  md:right-0 bottom-40  text-[15px] tracking-wider"
                 >
                     Bridging cycles and conscious <br /> decision - guiding you to act with <br /> clarity at the right moment in life
                 </motion.p>
             </div>
-        </div>
+        </section>
     );
 }

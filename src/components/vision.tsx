@@ -2,7 +2,6 @@
 import React from "react";
 import BlurText from "./ui/blur-text";
 
-
 export default function Vision() {
     return (
         <section
@@ -17,18 +16,17 @@ export default function Vision() {
             data-dot="bg-black/50"
             data-border="border-black/30"
         >
-            <div className="text-center py-20 lg:py-40 lg:w-3/5 mx-auto">
+            <div className="text-center py-20 mx-auto md:w-5/6 lg:py-40  ">
                 <h4 className="font-neosans flex items-center gap-2 text-extrasmall uppercase text-blue-900  justify-center">
                     <span className="inline-block size-1.5 bg-emerald-300 rounded-full"></span>
                     Vision
                 </h4>
                 <BlurText
-                    text="We empower humanity with the tools, knowledge and wisdom to face mental health challenges from a position of unprecedented
-                    resilience."
+                    text="We empower human potential by merging cosmic perspective with actionable strategy, fostering a state of resilience in which challenges are not merely endured, but transformed into catalysts for resilience and growth."
                     delay={30}
                     animateBy="words"
                     direction="bottom"
-                    className="text-[40px] leading-[40px] flex items-center lg:justify-center  space-y-2 max-w-screen-lg mx-auto mt-16 padding-x   text-blue-900 "
+                    className="text-2xl md:text-[40px] md:leading-[40px] flex items-center justify-center space-y-1 md:space-y-2  mt-16 padding-x   text-blue-900 "
                 />
             </div>
         </section>

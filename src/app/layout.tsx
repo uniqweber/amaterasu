@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import "./globals.css";
 import LenisWrapper from "@/components/ui/lenis-wrapper";
+import Wrapper from "@/components/ui/wrapper";
 
 export const metadata: Metadata = {
     title: "Amaterasu - Empower your mental health journey",
@@ -15,7 +16,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`  antialiased`}>
-                <LenisWrapper>{children}</LenisWrapper>
+                <LenisWrapper>
+                    <Wrapper>{children}</Wrapper>
+                </LenisWrapper>
             </body>
         </html>
     );
