@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import {Autoplay, EffectCoverflow} from "swiper/modules";
 import type {Swiper as SwiperInstance} from "swiper/types";
-import {hover, motion, useMotionValue, useSpring} from "framer-motion";
+import { motion, useMotionValue, useSpring} from "motion/react";
 
 const question: string[] = [
     "Have you ever felt a deep sense of connection to a place?",
