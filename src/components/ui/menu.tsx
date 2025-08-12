@@ -2,11 +2,20 @@
 import {useState} from "react";
 import Button from "./button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bgColor: string; borderColor: string}}) {
     const [menu, setMenu] = useState(false);
     const toggleMenu = () => setMenu((prev) => !prev);
+    const pathname = usePathname();
 
+    // Dynamically determine the label based on route
+    const getLabel = () => {
+        if (pathname === "/") return "Vision";
+        if (pathname === "/doris-rueggeberg") return "Doris";
+        if (pathname === "/contact") return "Contact";
+        return "Page"; // fallback for unknown routes
+    };
     const socialLinks = [
         {name: "TWITTER", href: "#"},
         {name: "LINKEDIN", href: "#"},
@@ -22,7 +31,7 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
                 }`}
             >
                 <div className={` uppercase h-5 text-extrasmall overflow-hidden leading-none tracking-widest ${navbarTheme.textColor}`}>
-                    <span className="h-full flex items-center group-hover:-translate-y-full duration-500">Vision</span>
+                    <span className="h-full flex items-center group-hover:-translate-y-full duration-500"> {getLabel()}</span>
                     <span className="h-full flex items-center translate-y-full group-hover:-translate-y-full duration-500">Menu</span>
                 </div>
 

@@ -1,7 +1,8 @@
+"use client";
 import Navbar from "@/components/navbar";
 import InfiniteReviewSection from "@/components/question";
+import {motion} from "motion/react";
 import Image from "next/image";
-import React from "react";
 
 export default function Page() {
     return (
@@ -17,9 +18,15 @@ export default function Page() {
                 data-theme-logo="invert-0"
                 data-dot="bg-black/50"
                 data-border="border-black/30"
-                className=" bg-no-repeat flex flex-col items-center padding-x justify-center bg-cover bg-center "
             >
-                <Image src="/logo-next.png" alt="dr" width={400} height={500} className="invert-75" />
+                <motion.div
+                    initial={{opacity: 0, y: 50}}
+                    whileInView={{opacity: 1, y: 0}}
+                    transition={{duration: 1, ease: "easeOut"}}
+                    className="flex items-center justify-center mt-10 md:mt-0"
+                >
+                    <Image src="/logo-next.png" alt="dr" width={400} height={500} className="invert-75" />
+                </motion.div>
             </section>
             <section
                 data-navbar-theme="light"
@@ -33,7 +40,7 @@ export default function Page() {
                 data-border="border-black/30"
                 className="relative md:w-1/2 ml-auto "
             >
-                <div className=" text-[#1b2978] text-lg font-medium  mx-auto px-10 pb-30 border-black/20 -ml-[7px] mt-10 md:-mt-[31px] md:border-l-2 ">
+                <motion.div initial={{opacity: 0, y: 50}} whileInView={{opacity: 1, y: 0}} transition={{duration: 1, ease: "easeOut"}} className=" text-[#1b2978] text-lg font-medium  mx-auto px-10 pb-30 border-black/20 -ml-[7px] mt-10 md:-mt-[31px] md:border-l-2 ">
                     <h4 className="font-neosans flex mb-10 items-center gap-2 text-extrasmall uppercase text-blue-900 ">
                         <span className="inline-block size-1.5 bg-emerald-300 rounded-full"></span>
                         Doris Rüggeberg
@@ -44,7 +51,7 @@ export default function Page() {
                     with an expanded, cosmically informed perspective. <br /> <br />
                     This work is not solely about resolving immediate challenges, but about consciously shaping spheres of action and living that
                     align with individual potential, strategic objectives, and broader temporal cycles.
-                </div>
+                </motion.div>
             </section>
             <section
                 data-navbar-theme="light"
@@ -58,15 +65,27 @@ export default function Page() {
                 data-border="border-black/30"
                 className="text-center padding-x"
             >
-                <h2 className="py-20 text-[#1B2978] text-5xl lg:text-7xl ">
+                <motion.h2
+                    initial={{opacity: 0, y: 50}}
+                    whileInView={{opacity: 1, y: 0}}
+                    transition={{duration: 1, ease: "easeOut"}}
+                    className="py-20 text-[#1B2978] text-5xl lg:text-7xl "
+                >
                     Transformative <br />
                     Clarity
-                </h2>
-                <p className="max-w-lg mx-auto text-[#1b2978] text-lg font-medium">
+                </motion.h2>
+                <motion.p
+                    initial={{opacity: 0, y: 50}}
+                    whileInView={{opacity: 1, y: 0}}
+                    transition={{duration: 1, ease: "easeOut"}}
+                    className="max-w-lg mx-auto text-[#1b2978] text-lg font-medium"
+                >
                     With precision and a high degree of empathy, she swiftly identifies the essence of any matter, creating the conditions for
                     profound transformation.
-                </p>
-                <InfiniteReviewSection />
+                </motion.p>
+                <motion.div initial={{opacity: 0, y: 50}} whileInView={{opacity: 1, y: 0}} transition={{duration: 1, ease: "easeOut"}}>
+                    <InfiniteReviewSection />
+                </motion.div>
             </section>
         </section>
     );
