@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import {Autoplay, EffectCoverflow} from "swiper/modules";
 import type {Swiper as SwiperInstance} from "swiper/types";
-import {motion, useMotionValue, useSpring} from "framer-motion";
+import {hover, motion, useMotionValue, useSpring} from "framer-motion";
 
 const question: string[] = [
     "Have you ever felt a deep sense of connection to a place?",
@@ -78,26 +78,23 @@ export default function App() {
     const resetHover = () => setHoverTarget(null);
 
     return (
-        <section ref={containerRef} data-dot="bg-transparent" data-border="border-transparent" className="relative overflow-hidden" style={{position: "relative", height: "100%"}}>
+        <section
+            ref={containerRef}
+            data-dot="bg-transparent"
+            data-border="border-black/30"
+            className="relative overflow-visible "
+            style={{position: "relative", height: "100%"}}
+        >
             {/* Cursor follower — absolute to section */}
             {isInside && (
                 <motion.div
-                    className="pointer-events-none absolute z-50 text-black text-2xl select-none -translate-1/2"
+                    className="pointer-events-none absolute z-50 text-black text-xl select-none -translate-1/2"
                     style={{
                         x: springX,
                         y: springY,
-                        width: 60,
-                        height: 60,
-                        borderRadius: "9999px",
-                        backgroundColor: "#00000010",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
                     }}
                 >
-                    {hoverTarget === "left" && <span>&larr;</span>}
-                    {hoverTarget === "right" && <span>&rarr;</span>}
-                    {hoverTarget === "active" && <span>&bull;</span>}
+                    {hoverTarget == "left" ? <span>&larr;</span> : hoverTarget == "right" ? <span>&rarr;</span> : <span className="size-1.5 inline-block rounded-full bg-black/40"></span>}
                 </motion.div>
             )}
 
