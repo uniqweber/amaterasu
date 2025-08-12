@@ -1,11 +1,14 @@
 "use client";
 
+import {useEffect, useRef, useState} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import {Autoplay, EffectCoverflow} from "swiper/modules";
+import type {Swiper as SwiperInstance} from "swiper/types";
+import {motion, useMotionValue, useSpring} from "framer-motion";
 
-const question = [
+const question: string[] = [
     "Have you ever felt a deep sense of connection to a place?",
     "How do you balance your personal ambitions with maintaining relationships?",
     "What helps you come to terms with the realization that some aspects of yourself may never change?",
@@ -14,44 +17,123 @@ const question = [
     "How do you balance your inner desires with the pressure you face from the outside world?",
 ];
 
+type HoverTarget = "left" | "right" | "active" | null;
+
 export default function App() {
+    const swiperRef = useRef<SwiperInstance | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    const [activeIndex, setActiveIndex] = useState<number>(0);
+    const [hoverTarget, setHoverTarget] = useState<HoverTarget>(null);
+    const [isInside, setIsInside] = useState<boolean>(false);
+
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    const springX = useSpring(mouseX, {stiffness: 150, damping: 20});
+    const springY = useSpring(mouseY, {stiffness: 150, damping: 20});
+
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const handleMouseMove = (e: MouseEvent) => {
+            // Get mouse position relative to container
+            const bounds = container.getBoundingClientRect();
+            mouseX.set(e.clientX - bounds.left);
+            mouseY.set(e.clientY - bounds.top);
+        };
+
+        const handleEnter = () => setIsInside(true);
+        const handleLeave = () => {
+            setIsInside(false);
+            setHoverTarget(null);
+        };
+
+        container.addEventListener("mousemove", handleMouseMove);
+        container.addEventListener("mouseenter", handleEnter);
+        container.addEventListener("mouseleave", handleLeave);
+
+        return () => {
+            container.removeEventListener("mousemove", handleMouseMove);
+            container.removeEventListener("mouseenter", handleEnter);
+            container.removeEventListener("mouseleave", handleLeave);
+        };
+    }, [mouseX, mouseY]);
+
+    const handleSlideClick = (index: number) => {
+        if (!swiperRef.current) return;
+        if (index < activeIndex) {
+            swiperRef.current.slidePrev();
+        } else if (index > activeIndex) {
+            swiperRef.current.slideNext();
+        }
+    };
+
+    const handleHover = (index: number) => {
+        if (index < activeIndex) setHoverTarget("left");
+        else if (index > activeIndex) setHoverTarget("right");
+        else setHoverTarget("active");
+    };
+
+    const resetHover = () => setHoverTarget(null);
+
     return (
-        <section data-dot="bg-black/50" data-border="border-black/30">
+        <section ref={containerRef} data-dot="bg-transparent" data-border="border-transparent" className="relative overflow-hidden" style={{position: "relative", height: "100%"}}>
+            {/* Cursor follower — absolute to section */}
+            {isInside && (
+                <motion.div
+                    className="pointer-events-none absolute z-50 text-black text-2xl select-none -translate-1/2"
+                    style={{
+                        x: springX,
+                        y: springY,
+                        width: 60,
+                        height: 60,
+                        borderRadius: "9999px",
+                        backgroundColor: "#00000010",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
+                    {hoverTarget === "left" && <span>&larr;</span>}
+                    {hoverTarget === "right" && <span>&rarr;</span>}
+                    {hoverTarget === "active" && <span>&bull;</span>}
+                </motion.div>
+            )}
+
+            {/* Swiper carousel */}
             <Swiper
-                effect={"coverflow"}
-                grabCursor={true}
-                centeredSlides={true}
+                effect="coverflow"
+                grabCursor
+                centeredSlides
                 breakpoints={{
-                    640: {
-                        slidesPerView: 1.4,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                    },
+                    640: {slidesPerView: 1.4},
+                    768: {slidesPerView: 2},
                 }}
                 coverflowEffect={{
                     depth: 480,
                     slideShadows: false,
                 }}
-                autoplay={true}
+                autoplay={{delay: 3000}}
                 speed={1000}
+                onSwiper={(swiper) => {
+                    swiperRef.current = swiper;
+                }}
+                onSlideChange={(swiper) => {
+                    setActiveIndex(swiper.activeIndex);
+                }}
                 modules={[EffectCoverflow, Autoplay]}
-                className=" max-w-screen-xl mt-20 py-20 mx-auto"
+                className="max-w-screen-xl my-20 py-20 mx-auto"
             >
-                {question.map((_, index) => (
-                    <SwiperSlide key={index} className="">
-                        <div className=" px-6 py-4 text-lg text-blue-900 flex text-left items-center gap-3 font-medium max-w-md mx-auto rounded-full border border-black/20 ">
-                            <svg viewBox="0 0 100 50" className="size-20 " xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10,25 Q30,15 50,25 Q70,35 90,25"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="3"
-                                    strokeLinecap="round"
-                                    className={`sine-wave-animate`}
-                                />
-                            </svg>
-                            {_}
+                {question.map((q: string, index: number) => (
+                    <SwiperSlide key={index}>
+                        <div
+                            onClick={() => handleSlideClick(index)}
+                            onMouseEnter={() => handleHover(index)}
+                            onMouseLeave={resetHover}
+                            className="px-6 py-4 text-lg text-blue-900 text-left font-medium max-w-md mx-auto rounded-full border border-black/20 cursor-pointer transition-all duration-300 "
+                        >
+                            {q}
                         </div>
                     </SwiperSlide>
                 ))}
