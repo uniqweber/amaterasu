@@ -103,12 +103,10 @@ button {
     animation: sineWave 2s ease-in-out infinite, waveSlide 2s ease-in-out infinite;
 }
 
-
-.swiper-slide-prev ,
-.swiper-slide-next  {
-  filter: blur(2.5px);
+.swiper-slide-prev,
+.swiper-slide-next {
+    filter: blur(2.5px);
 }
-
 
 html {
     scroll-behavior: auto;

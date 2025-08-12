@@ -1,6 +1,5 @@
 "use client";
 import Navbar from "@/components/navbar";
-import InfiniteReviewSection from "@/components/question";
 import {motion} from "motion/react";
 import Image from "next/image";
 
@@ -40,10 +39,15 @@ export default function Page() {
                 data-border="border-black/30"
                 className="relative md:w-1/2 ml-auto "
             >
-                <motion.div initial={{opacity: 0, y: 50}} whileInView={{opacity: 1, y: 0}} transition={{duration: 1, ease: "easeOut"}} className=" text-[#1b2978] text-lg font-medium  mx-auto px-10 pb-30 border-black/20 -ml-[7px] mt-10 md:-mt-[31px] md:border-l-2 ">
+                <motion.div
+                    initial={{opacity: 0, y: 50}}
+                    whileInView={{opacity: 1, y: 0}}
+                    transition={{duration: 1, ease: "easeOut"}}
+                    className=" text-[#1b2978] text-lg font-medium  mx-auto px-10 pb-30 border-black/20 -ml-[7px] mt-10 md:-mt-[31px] md:border-l-2 "
+                >
                     <h4 className="font-neosans flex mb-10 items-center gap-2 text-extrasmall uppercase text-blue-900 ">
                         <span className="inline-block size-1.5 bg-emerald-300 rounded-full"></span>
-                        Doris Rüggeberg
+                        Meet Doris Rüggeberg
                     </h4>
                     Doris Rüggeberg guides leaders, creatives, and decision-makers from diverse fields ranging from business to the entrepreneurs
                     towards clarity, efficiency, and inner alignment. <br /> <br />
@@ -83,9 +87,6 @@ export default function Page() {
                     With precision and a high degree of empathy, she swiftly identifies the essence of any matter, creating the conditions for
                     profound transformation.
                 </motion.p>
-                <motion.div initial={{opacity: 0, y: 50}} whileInView={{opacity: 1, y: 0}} transition={{duration: 1, ease: "easeOut"}}>
-                    <InfiniteReviewSection />
-                </motion.div>
             </section>
         </section>
     );

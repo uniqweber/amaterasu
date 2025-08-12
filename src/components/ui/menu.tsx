@@ -2,7 +2,8 @@
 import {useState} from "react";
 import Button from "./button";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import {usePathname} from "next/navigation";
+
 
 export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bgColor: string; borderColor: string}}) {
     const [menu, setMenu] = useState(false);
@@ -14,11 +15,12 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
         if (pathname === "/") return "Vision";
         if (pathname === "/doris-rueggeberg") return "Doris";
         if (pathname === "/contact") return "Contact";
-        return "Page"; // fallback for unknown routes
+        return "Reflection"; // fallback for unknown routes
     };
     const socialLinks = [
         {name: "TWITTER", href: "#"},
         {name: "LINKEDIN", href: "#"},
+        {name: "INSTAGRAM", href: "#"},
         {name: "EMAIL", href: "#"},
     ];
 
@@ -88,7 +90,9 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
                             ))}
                         </div>
                         <Link href="/contact">
-                            <Button xValue={110} />
+                            <Button xValue={100} textValue={20}>
+                                Get in Touch
+                            </Button>
                         </Link>
                     </div>
                 </div>

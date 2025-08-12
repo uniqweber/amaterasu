@@ -33,7 +33,7 @@ export default function Button({variant = "bg", children = "invest with us", cla
                     x: isHovered ? xValue : 0,
                 }}
                 transition={{
-                    duration: 0.4,
+                    duration: 0.3,
                     ease: "easeOut",
                     delay: isHovered ? 0 : 0.2,
                 }}
@@ -47,12 +47,12 @@ export default function Button({variant = "bg", children = "invest with us", cla
                 }}
                 transition={{
                     x: {
-                        duration: 0.3,
+                        duration: 0.2,
                         ease: "easeOut",
                         delay: isHovered ? 0.4 : 0.6,
                     },
                     opacity: {
-                        duration: 0.1,
+                        duration: 0.2,
                         ease: "easeOut",
                         delay: isHovered ? 0 : 0.6,
                     },
@@ -68,7 +68,7 @@ export default function Button({variant = "bg", children = "invest with us", cla
                     x: isHovered ? -8 : 20,
                 }}
                 transition={{
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: "easeOut",
                     delay: isHovered ? 0.4 : 0,
                 }}

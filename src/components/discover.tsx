@@ -1,3 +1,4 @@
+import Link from "next/link";
 import BlurText from "./ui/blur-text";
 import Button from "./ui/button";
 
@@ -26,9 +27,11 @@ export default function Discover() {
                 direction="bottom"
                 className="text-4xl md:text-5xl justify-center font-medium  mb-10  text-blue-900 "
             />
-            <Button xValue={100} textValue={20}>
-                Get in Touch 
-            </Button>
+            <Link href='/contact'>
+                <Button xValue={100} textValue={20}>
+                    Get in Touch
+                </Button>
+            </Link>
         </section>
     );
 }

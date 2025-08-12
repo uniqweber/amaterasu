@@ -17,9 +17,11 @@ const question: string[] = [
     "How do you balance your inner desires with the pressure you face from the outside world?",
 ];
 
+
+
 type HoverTarget = "left" | "right" | "active" | null;
 
-export default function App() {
+export default function Question() {
     const swiperRef = useRef<SwiperInstance | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -81,20 +83,19 @@ export default function App() {
         <section
             ref={containerRef}
             data-dot="bg-transparent"
-            data-border="border-black/30"
-            className="relative overflow-visible "
+            className="relative"
             style={{position: "relative", height: "100%"}}
         >
             {/* Cursor follower — absolute to section */}
             {isInside && (
                 <motion.div
-                    className="pointer-events-none absolute z-50 text-black text-xl select-none -translate-1/2"
+                    className="pointer-events-none absolute z-50 text-white text-xl select-none -translate-1/2"
                     style={{
                         x: springX,
                         y: springY,
                     }}
                 >
-                    {hoverTarget == "left" ? <span>&larr;</span> : hoverTarget == "right" ? <span>&rarr;</span> : <span className="size-1.5 inline-block rounded-full bg-black/40"></span>}
+                    {hoverTarget == "left" ? <span>&larr;</span> : hoverTarget == "right" ? <span>&rarr;</span> : <span className="size-1.5 inline-block rounded-full bg-white"></span>}
                 </motion.div>
             )}
 
@@ -128,7 +129,7 @@ export default function App() {
                             onClick={() => handleSlideClick(index)}
                             onMouseEnter={() => handleHover(index)}
                             onMouseLeave={resetHover}
-                            className="px-6 py-4 text-lg text-blue-900 text-left font-medium max-w-md mx-auto rounded-full border border-black/20 cursor-pointer transition-all duration-300 "
+                            className="px-8 py-4 text-lg text-white text-left font-medium max-w-md mx-auto rounded-full border border-white/10 cursor-pointer transition-all duration-300 "
                         >
                             {q}
                         </div>

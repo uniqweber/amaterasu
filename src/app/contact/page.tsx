@@ -7,8 +7,13 @@ export default function Contact() {
     return (
         <>
             <Navbar />
-            <section className="min-h-screen gradient-background flex padding-x items-center justify-center">
-                <motion.div initial={{opacity: 0, y: 50}} whileInView={{opacity: 1, y: 0}} transition={{duration: 1, ease: "easeOut"}} className="w-full flex items-center justify-center">
+            <section data-navbar-theme="dark" className="min-h-screen gradient-background flex padding-x items-center justify-center">
+                <motion.div
+                    initial={{opacity: 0, y: 50}}
+                    whileInView={{opacity: 1, y: 0}}
+                    transition={{duration: 1, ease: "easeOut"}}
+                    className="w-full flex items-center justify-center"
+                >
                     <form className="bg-white p-5 md:p-8 space-y-3 max-w-lg w-full rounded-2xl shadow-2xl">
                         <div>
                             <label className="font-neosans text-gray-600 flex items-center">

@@ -5,6 +5,7 @@ import Image from "next/image";
 import {motion, useMotionValue, useSpring, useTransform} from "motion/react";
 import Background from "./ui/background";
 import Button from "./ui/button";
+import Link from "next/link";
 
 export default function Hero() {
     const heroRef = useRef<HTMLDivElement>(null);
@@ -87,7 +88,9 @@ export default function Hero() {
                                 transition={{duration: 1, ease: "easeOut"}}
                                 className="w-full flex items-center md:justify-end mt-10"
                             >
-                                <Button xValue={145}>Start your journey</Button>
+                                <Link href={"/inner-reflection"}>
+                                    <Button xValue={145}>Start your journey</Button>
+                                </Link>
                             </motion.div>
                         </div>
                     </div>
