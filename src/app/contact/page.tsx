@@ -10,7 +10,7 @@ export default function Contact() {
             <section data-navbar-theme="dark" className="min-h-screen gradient-background flex padding-x items-center justify-center">
                 <motion.div
                     initial={{opacity: 0, y: 50}}
-                    whileInView={{opacity: 1, y: 0}}
+                    animate={{opacity: 1, y: 0}}
                     transition={{duration: 1, ease: "easeOut"}}
                     className="w-full flex items-center justify-center"
                 >

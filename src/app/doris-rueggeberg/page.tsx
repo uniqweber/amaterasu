@@ -20,7 +20,7 @@ export default function Page() {
             >
                 <motion.div
                     initial={{opacity: 0, y: 50}}
-                    whileInView={{opacity: 1, y: 0}}
+                    animate={{opacity: 1, y: 0}}
                     transition={{duration: 1, ease: "easeOut"}}
                     className="flex items-center justify-center mt-10 md:mt-0"
                 >
@@ -41,7 +41,7 @@ export default function Page() {
             >
                 <motion.div
                     initial={{opacity: 0, y: 50}}
-                    whileInView={{opacity: 1, y: 0}}
+                    animate={{opacity: 1, y: 0}}
                     transition={{duration: 1, ease: "easeOut"}}
                     className=" text-[#1b2978] text-lg font-medium  mx-auto px-10 pb-30 border-black/20 -ml-[7px] mt-10 md:-mt-[31px] md:border-l-2 "
                 >

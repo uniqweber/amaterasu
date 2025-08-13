@@ -37,7 +37,6 @@ export default function Question() {
         if (!container) return;
 
         const handleMouseMove = (e: MouseEvent) => {
-            // Get mouse position relative to container
             const bounds = container.getBoundingClientRect();
             mouseX.set(e.clientX - bounds.left);
             mouseY.set(e.clientY - bounds.top);
@@ -79,7 +78,6 @@ export default function Question() {
 
     return (
         <section ref={containerRef} data-dot="bg-transparent" className="relative" style={{position: "relative", height: "100%"}}>
-            {/* Cursor follower — absolute to section */}
             {isInside && (
                 <motion.div
                     className="pointer-events-none hidden lg:block absolute z-50 text-white text-xl select-none -translate-1/2"
@@ -88,15 +86,16 @@ export default function Question() {
                         y: springY,
                     }}
                 >
-                    {hoverTarget == "left" ? (
+                    {hoverTarget === "left" ? (
                         <span>&larr;</span>
-                    ) : hoverTarget == "right" ? (
+                    ) : hoverTarget === "right" ? (
                         <span>&rarr;</span>
                     ) : (
                         <span className="size-1.5 inline-block rounded-full bg-white"></span>
                     )}
                 </motion.div>
             )}
+
             <div className="max-w-screen-xl mx-auto relative">
                 <Swiper
                     loop={true}
@@ -111,24 +110,29 @@ export default function Question() {
                         depth: 480,
                         slideShadows: false,
                     }}
-                    autoplay={{delay: 3000}}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: false,
+                    }}
                     speed={1000}
                     onSwiper={(swiper) => {
                         swiperRef.current = swiper;
+                        setTimeout(() => {
+                            if (swiper.autoplay?.start) swiper.autoplay.start();
+                        }, 100);
                     }}
-                    onSlideChange={(swiper) => {
-                        setActiveIndex(swiper.realIndex);
-                    }}
+                    onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                     modules={[EffectCoverflow, Autoplay]}
-                    className=" my-20 py-20 padding-x "
+                    className="my-20 py-20 padding-x"
                 >
-                    {question.map((q: string, index: number) => (
-                        <SwiperSlide key={index} className="">
+                    {question.map((q, index) => (
+                        <SwiperSlide key={index}>
                             <div
                                 onClick={() => handleSlideClick(index)}
                                 onMouseEnter={() => handleHover(index)}
                                 onMouseLeave={resetHover}
-                                className="px-4 md:px-8 py-4 text-lg text-white md:text-left font-medium max-w-[340px] md:max-w-md w-full mx-auto text-center rounded-full border border-white/10 cursor-pointer transition-all duration-300 "
+                                className="px-4 md:px-8 py-4 text-lg text-white md:text-left font-medium max-w-[340px] md:max-w-md w-full mx-auto text-center rounded-full border border-white/10 cursor-pointer transition-all duration-300"
                             >
                                 {q}
                             </div>

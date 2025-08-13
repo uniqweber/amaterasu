@@ -73,9 +73,10 @@ export default function Hero() {
                     <div className="md:w-1/2 pb-10 md:pb-0">
                         <div className="flex items-center flex-col md:text-right">
                             <motion.div
-                                whileInView={{y: 0}}
+                                animate={{y: 0}}
                                 initial={{y: 100}}
                                 transition={{duration: 1, ease: "easeOut"}}
+                                
                                 className="space-y-2 text-4xl lg:text-[65px] font-sans font-light -tracking-[2px] pointer-events-none w-full  leading-none text-white"
                             >
                                 <span className="block text-shadow-2xs">Empower your </span>
@@ -83,7 +84,7 @@ export default function Hero() {
                                 <span className="block text-shadow-2xs"> wisdom</span>
                             </motion.div>
                             <motion.div
-                                whileInView={{y: 0}}
+                                animate={{y: 0}}
                                 initial={{y: 100}}
                                 transition={{duration: 1, ease: "easeOut"}}
                                 className="w-full flex items-center md:justify-end mt-10"
@@ -109,7 +110,7 @@ export default function Hero() {
 
                 {/* Tagline bottom right */}
                 <motion.p
-                    whileInView={{y: 0}}
+                    animate={{y: 0}}
                     initial={{y: 100}}
                     transition={{duration: 1, ease: "easeOut"}}
                     className="w-max  absolute padding-x pointer-events-none left-0 md:left-auto  md:right-0 bottom-40  text-[15px] tracking-wider"

@@ -22,7 +22,7 @@ export default function Page() {
                 <section>
                     <motion.div
                         initial={{opacity: 0, y: 50}}
-                        whileInView={{opacity: 1, y: 0}}
+                        animate={{opacity: 1, y: 0}}
                         transition={{duration: 1, ease: "easeOut"}}
                         className="flex items-center justify-center "
                     >
@@ -43,7 +43,7 @@ export default function Page() {
                 >
                     <motion.div
                         initial={{opacity: 0, y: 50}}
-                        whileInView={{opacity: 1, y: 0}}
+                        animate={{opacity: 1, y: 0}}
                         transition={{duration: 1, ease: "easeOut"}}
                         className=" text-[#1b2978] text-lg font-medium "
                     >
