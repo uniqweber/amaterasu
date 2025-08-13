@@ -14,6 +14,7 @@ export default function Home() {
             <Info />
             <Discover />
             <Footer />
+            
         </>
     );
 }

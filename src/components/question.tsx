@@ -80,12 +80,7 @@ export default function Question() {
     const resetHover = () => setHoverTarget(null);
 
     return (
-        <section
-            ref={containerRef}
-            data-dot="bg-transparent"
-            className="relative"
-            style={{position: "relative", height: "100%"}}
-        >
+        <section ref={containerRef} data-dot="bg-transparent" className="relative" style={{position: "relative", height: "100%"}}>
             {/* Cursor follower — absolute to section */}
             {isInside && (
                 <motion.div
@@ -95,12 +90,19 @@ export default function Question() {
                         y: springY,
                     }}
                 >
-                    {hoverTarget == "left" ? <span>&larr;</span> : hoverTarget == "right" ? <span>&rarr;</span> : <span className="size-1.5 inline-block rounded-full bg-white"></span>}
+                    {hoverTarget == "left" ? (
+                        <span>&larr;</span>
+                    ) : hoverTarget == "right" ? (
+                        <span>&rarr;</span>
+                    ) : (
+                        <span className="size-1.5 inline-block rounded-full bg-white"></span>
+                    )}
                 </motion.div>
             )}
 
             {/* Swiper carousel */}
             <Swiper
+                loop={true} // 👈 THIS is the magic
                 effect="coverflow"
                 grabCursor
                 centeredSlides
@@ -118,7 +120,7 @@ export default function Question() {
                     swiperRef.current = swiper;
                 }}
                 onSlideChange={(swiper) => {
-                    setActiveIndex(swiper.activeIndex);
+                    setActiveIndex(swiper.realIndex); 
                 }}
                 modules={[EffectCoverflow, Autoplay]}
                 className="max-w-screen-xl my-20 py-20 mx-auto"

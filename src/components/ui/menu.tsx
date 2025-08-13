@@ -4,7 +4,6 @@ import Button from "./button";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 
-
 export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bgColor: string; borderColor: string}}) {
     const [menu, setMenu] = useState(false);
     const toggleMenu = () => setMenu((prev) => !prev);
@@ -13,6 +12,7 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
     // Dynamically determine the label based on route
     const getLabel = () => {
         if (pathname === "/") return "Vision";
+        if (pathname === "/vision") return "Vision";
         if (pathname === "/doris-rueggeberg") return "Doris";
         if (pathname === "/contact") return "Contact";
         return "Reflection"; // fallback for unknown routes
@@ -70,10 +70,21 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
                         }`}
                     >
                         <div className="space-y-2 text-4xl  -tracking-[2px]   w-full  leading-none text-white">
-                            <Link href="/" className="block text-blue-900 leading-none mb-2">
+                            <Link href="/" className={`block  leading-none mb-2 ${pathname === "/" || pathname === "/inner-reflection" || pathname === "/contact"  ? "text-blue-900" : "text-blue-900/50"}`}>
+                                Home
+                            </Link>
+                            <Link
+                                href="/vision"
+                                className={`block leading-none mb-2 ${pathname === "/vision" ? "text-blue-900" : "text-blue-900/50 "}`}
+                            >
                                 Vision
                             </Link>
-                            <Link href="/doris-rueggeberg" className="block text-blue-900/50 leading-none">
+                            <Link
+                                href="/doris-rueggeberg"
+                                className={`block  leading-none ${
+                                    pathname === "/doris-rueggeberg" ? "text-blue-900" : "text-blue-900/50"
+                                }`}
+                            >
                                 Doris Rüggeberg
                             </Link>
                         </div>
