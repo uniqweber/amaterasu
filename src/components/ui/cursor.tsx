@@ -11,7 +11,7 @@ type CursorProps = {
 
 const Cursor = ({springX, springY, viewBtnX, viewBtnY, dotColor, borderColor}: CursorProps) => {
     return (
-        <div>
+        <div className="hidden lg:block">
             <motion.span
                 initial={{scale: 0, opacity: 0}}
                 animate={{scale: 1, opacity: 1}}

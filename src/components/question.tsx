@@ -84,7 +84,7 @@ export default function Question() {
             {/* Cursor follower — absolute to section */}
             {isInside && (
                 <motion.div
-                    className="pointer-events-none absolute z-50 text-white text-xl select-none -translate-1/2"
+                    className="pointer-events-none hidden lg:block absolute z-50 text-white text-xl select-none -translate-1/2"
                     style={{
                         x: springX,
                         y: springY,
