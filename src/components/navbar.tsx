@@ -13,6 +13,13 @@ interface NavbarTheme {
     logo: string;
 }
 
+// 👇 Add this so TypeScript doesn't scream at window.audioInstance
+declare global {
+    interface Window {
+        audioInstance?: HTMLAudioElement;
+    }
+}
+
 export default function Navbar() {
     const [navbarTheme, setNavbarTheme] = useState<NavbarTheme>({
         textColor: "text-white",
@@ -27,6 +34,7 @@ export default function Navbar() {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const lastThemeRef = useRef<NavbarTheme>(navbarTheme);
 
+    // 🧠 Handle navbar theme switch
     useEffect(() => {
         let ticking = false;
 
@@ -57,7 +65,6 @@ export default function Navbar() {
                 }
             });
 
-            // Only update state if theme has changed
             if (JSON.stringify(activeTheme) !== JSON.stringify(lastThemeRef.current)) {
                 setNavbarTheme(activeTheme);
                 lastThemeRef.current = activeTheme;
@@ -84,34 +91,69 @@ export default function Navbar() {
         };
     }, []);
 
-    // Music toggle function
+    // ✅ Setup persistent global audio on first interaction
+    useEffect(() => {
+        const handleFirstInteraction = () => {
+            if (!audioRef.current && typeof window !== "undefined") {
+                // Use existing audio instance if available
+                if (!window.audioInstance) {
+                    window.audioInstance = new Audio("/music.mp3");
+                    window.audioInstance.loop = true;
+                    window.audioInstance.volume = 0.5;
+                }
+                audioRef.current = window.audioInstance;
+
+                // Try playing
+                audioRef.current
+                    .play()
+                    .then(() => {
+                        setIsPlaying(true);
+                    })
+                    .catch((err) => {
+                        console.warn("Autoplay blocked by browser:", err);
+                    });
+            }
+
+            window.removeEventListener("click", handleFirstInteraction);
+            window.removeEventListener("scroll", handleFirstInteraction);
+        };
+
+        window.addEventListener("click", handleFirstInteraction);
+        window.addEventListener("scroll", handleFirstInteraction);
+
+        return () => {
+            window.removeEventListener("click", handleFirstInteraction);
+            window.removeEventListener("scroll", handleFirstInteraction);
+        };
+    }, []);
+
+    // ✅ Manual toggle function
     const toggleMusic = (): void => {
-        if (!audioRef.current) {
-            audioRef.current = new Audio("/music.mp3");
-            audioRef.current.loop = true;
-            audioRef.current.volume = 0.5; // Set volume to 50%
+        if (!audioRef.current && typeof window !== "undefined") {
+            if (!window.audioInstance) {
+                window.audioInstance = new Audio("/music.mp3");
+                window.audioInstance.loop = true;
+                window.audioInstance.volume = 0.5;
+            }
+            audioRef.current = window.audioInstance;
         }
+
+        if (!audioRef.current) return;
 
         if (isPlaying) {
             audioRef.current.pause();
             setIsPlaying(false);
         } else {
-            audioRef.current.play().catch((error: Error) => {
-                console.error("Error playing audio:", error);
-            });
-            setIsPlaying(true);
+            audioRef.current
+                .play()
+                .then(() => {
+                    setIsPlaying(true);
+                })
+                .catch((error: Error) => {
+                    console.error("Error playing audio:", error);
+                });
         }
     };
-
-    // Cleanup audio on component unmount
-    useEffect(() => {
-        return () => {
-            if (audioRef.current) {
-                audioRef.current.pause();
-                audioRef.current = null;
-            }
-        };
-    }, []);
 
     return (
         <>
@@ -128,22 +170,22 @@ export default function Navbar() {
 
                 <Menu navbarTheme={navbarTheme} />
 
-                {/* floating button with music toggle */}
+                {/* 🎵 Floating Music Toggle Button */}
                 <div className="fixed right-0 bottom-10 padding-x z-30">
                     <div
                         onClick={toggleMusic}
                         className={`size-15 rounded-full border flex items-center justify-center cursor-pointer transition-all duration-500 hover:scale-110 ${navbarTheme.buttonBorder}`}
-                        title={isPlaying ? "Recording..." : "Play Music"}
+                        title={isPlaying ? "Pause Music" : "Play Music"}
                     >
                         {isPlaying ? (
-                            <svg viewBox="0 0 100 50" className="size-6 " xmlns="http://www.w3.org/2000/svg">
+                            <svg viewBox="0 0 100 50" className="size-6" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M10,25 Q30,15 50,25 Q70,35 90,25"
                                     fill="none"
                                     stroke="currentColor"
                                     strokeWidth="3"
                                     strokeLinecap="round"
-                                    className={`sine-wave-animate`}
+                                    className="sine-wave-animate"
                                 />
                             </svg>
                         ) : (

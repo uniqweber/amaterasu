@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import {Autoplay, EffectCoverflow} from "swiper/modules";
 import type {Swiper as SwiperInstance} from "swiper/types";
-import { motion, useMotionValue, useSpring} from "motion/react";
+import {motion, useMotionValue, useSpring} from "motion/react";
 
 const question: string[] = [
     "Have you ever felt a deep sense of connection to a place?",
@@ -16,8 +16,6 @@ const question: string[] = [
     "Can you recall a moment of peace during chaos? What contributed to that sense of calm?",
     "How do you balance your inner desires with the pressure you face from the outside world?",
 ];
-
-
 
 type HoverTarget = "left" | "right" | "active" | null;
 
@@ -99,45 +97,45 @@ export default function Question() {
                     )}
                 </motion.div>
             )}
-
-            {/* Swiper carousel */}
-            <Swiper
-                loop={true} // 👈 THIS is the magic
-                effect="coverflow"
-                grabCursor
-                centeredSlides
-                breakpoints={{
-                    640: {slidesPerView: 1.4},
-                    768: {slidesPerView: 2},
-                }}
-                coverflowEffect={{
-                    depth: 480,
-                    slideShadows: false,
-                }}
-                autoplay={{delay: 3000}}
-                speed={1000}
-                onSwiper={(swiper) => {
-                    swiperRef.current = swiper;
-                }}
-                onSlideChange={(swiper) => {
-                    setActiveIndex(swiper.realIndex); 
-                }}
-                modules={[EffectCoverflow, Autoplay]}
-                className="max-w-screen-xl my-20 py-20 mx-auto"
-            >
-                {question.map((q: string, index: number) => (
-                    <SwiperSlide key={index}>
-                        <div
-                            onClick={() => handleSlideClick(index)}
-                            onMouseEnter={() => handleHover(index)}
-                            onMouseLeave={resetHover}
-                            className="px-8 py-4 text-lg text-white text-left font-medium max-w-md mx-auto rounded-full border border-white/10 cursor-pointer transition-all duration-300 "
-                        >
-                            {q}
-                        </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+            <div className="max-w-screen-xl mx-auto relative">
+                <Swiper
+                    loop={true}
+                    effect="coverflow"
+                    grabCursor
+                    centeredSlides
+                    breakpoints={{
+                        640: {slidesPerView: 1.4},
+                        768: {slidesPerView: 2},
+                    }}
+                    coverflowEffect={{
+                        depth: 480,
+                        slideShadows: false,
+                    }}
+                    autoplay={{delay: 3000}}
+                    speed={1000}
+                    onSwiper={(swiper) => {
+                        swiperRef.current = swiper;
+                    }}
+                    onSlideChange={(swiper) => {
+                        setActiveIndex(swiper.realIndex);
+                    }}
+                    modules={[EffectCoverflow, Autoplay]}
+                    className=" my-20 py-20 padding-x "
+                >
+                    {question.map((q: string, index: number) => (
+                        <SwiperSlide key={index} className="">
+                            <div
+                                onClick={() => handleSlideClick(index)}
+                                onMouseEnter={() => handleHover(index)}
+                                onMouseLeave={resetHover}
+                                className="px-4 md:px-8 py-4 text-lg text-white md:text-left font-medium max-w-[340px] md:max-w-md w-full mx-auto text-center rounded-full border border-white/10 cursor-pointer transition-all duration-300 "
+                            >
+                                {q}
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
         </section>
     );
 }
