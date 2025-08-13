@@ -1,7 +1,7 @@
 "use client";
 
 import {useLayoutEffect, useRef, useState} from "react";
-import {useMotionValue, useSpring, MotionValue} from "framer-motion"; // use framer-motion not motion/react
+import {useMotionValue, useSpring, MotionValue} from "motion/react"; 
 
 const DEFAULT_BORDER = "border-white/30";
 const DEFAULT_BG = "bg-white";

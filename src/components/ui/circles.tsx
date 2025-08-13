@@ -1,6 +1,6 @@
 "use client";
 import React, {useRef, useEffect} from "react";
-import {motion, Variants, useInView, useAnimation} from "framer-motion";
+import {motion, Variants, useInView, useAnimation} from "motion/react";
 
 const Circles = ({title}: {title: string}) => {
     const ref = useRef(null);

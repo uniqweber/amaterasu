@@ -19,7 +19,7 @@
 
 body {
     font-family: var(--font-lausane);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 button {
@@ -111,5 +111,4 @@ button {
 
 html {
     scroll-behavior: auto;
-    scroll-padding-top: 80px; /* Or match your header height */
 }

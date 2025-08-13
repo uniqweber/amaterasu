@@ -5,7 +5,7 @@ import {motion} from "motion/react";
 
 export default function Contact() {
     return (
-        <>
+        <div data-navbar-theme="dark">
             <Navbar />
             <section data-navbar-theme="dark" className="min-h-screen gradient-background flex padding-x items-center justify-center">
                 <motion.div
@@ -45,6 +45,6 @@ export default function Contact() {
                     </form>
                 </motion.div>
             </section>
-        </>
+        </div>
     );
 }

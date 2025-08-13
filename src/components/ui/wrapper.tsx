@@ -1,6 +1,6 @@
 "use client";
 
-import {AnimatePresence, motion} from "framer-motion";
+import {AnimatePresence, motion} from "motion/react";
 import {useState, useRef} from "react";
 import Cursor from "@/components/ui/cursor";
 import EnterAnimation from "@/components/enter";

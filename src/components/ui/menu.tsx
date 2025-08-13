@@ -2,20 +2,21 @@
 import {useState} from "react";
 import Button from "./button";
 import Link from "next/link";
-import {usePathname} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 
 export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bgColor: string; borderColor: string}}) {
     const [menu, setMenu] = useState(false);
-    const toggleMenu = () => setMenu((prev) => !prev);
+
+    const router = useRouter();
     const pathname = usePathname();
 
-    // Dynamically determine the label based on route
+    const toggleMenu = () => setMenu((prev) => !prev);
     const getLabel = () => {
         if (pathname === "/") return "Vision";
         if (pathname === "/vision") return "Vision";
         if (pathname === "/doris-rueggeberg") return "Doris";
         if (pathname === "/contact") return "Contact";
-        return "Reflection"; // fallback for unknown routes
+        return "Reflection";
     };
     const socialLinks = [
         {name: "TWITTER", href: "#"},
@@ -23,6 +24,16 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
         {name: "INSTAGRAM", href: "#"},
         {name: "EMAIL", href: "#"},
     ];
+
+    const handleClick = () => {
+        window.stopLenisScroll?.();
+        setTimeout(() => {
+            router.push("/contact", {scroll: false});
+            setTimeout(() => {
+                window.startLenisScroll?.();
+            }, 300);
+        }, 100);
+    };
 
     return (
         <div className="md:relative ">
@@ -70,7 +81,14 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
                         }`}
                     >
                         <div className="space-y-2 text-4xl  -tracking-[2px]   w-full  leading-none text-white">
-                            <Link href="/" className={`block  leading-none mb-2 ${pathname === "/" || pathname === "/inner-reflection" || pathname === "/contact"  ? "text-blue-900" : "text-blue-900/50"}`}>
+                            <Link
+                                href="/"
+                                className={`block  leading-none mb-2 ${
+                                    pathname === "/" || pathname === "/inner-reflection" || pathname === "/contact"
+                                        ? "text-blue-900"
+                                        : "text-blue-900/50"
+                                }`}
+                            >
                                 Home
                             </Link>
                             <Link
@@ -81,9 +99,7 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
                             </Link>
                             <Link
                                 href="/doris-rueggeberg"
-                                className={`block  leading-none ${
-                                    pathname === "/doris-rueggeberg" ? "text-blue-900" : "text-blue-900/50"
-                                }`}
+                                className={`block  leading-none ${pathname === "/doris-rueggeberg" ? "text-blue-900" : "text-blue-900/50"}`}
                             >
                                 Doris Rüggeberg
                             </Link>
@@ -100,11 +116,11 @@ export default function Menu({navbarTheme}: {navbarTheme: {textColor: string; bg
                                 </a>
                             ))}
                         </div>
-                        <Link href="/contact">
+                        <div onClick={handleClick} >
                             <Button xValue={100} textValue={20}>
                                 Get in Touch
                             </Button>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>
