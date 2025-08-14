@@ -51,7 +51,7 @@ export default function Page() {
                             <span className="inline-block size-1.5 bg-emerald-300 rounded-full"></span>
                             Vision
                         </h4>
-                        We translate complexity into actionable clarity, applying both analytical rigor and empathic understanding. Each consultation
+                        I translate complexity into actionable clarity, applying both analytical rigor and empathic understanding. Each consultation
                         is designed to resolve the current challenge while fortifying resilience for the future, reducing the personal and
                         professional costs of recurring patterns and ineffective strategies.
                     </motion.div>

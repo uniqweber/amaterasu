@@ -15,8 +15,11 @@ export default function Footer() {
                 <div className="grid lg:grid-cols-2  gap-10 pb-20 lg:pb-10 lg:gap-40   w-full 2xl:max-w-screen-2xl xl:max-w-screen-xl mx-auto">
                     <motion.div whileInView={{y: 0}} initial={{y: 50}} transition={{duration: 1, ease: "easeOut"}}>
                         <div className="space-y-2 text-4xl lg:text-[51px] -mt-2   w-full  leading-none text-white">
-                            <span>Vision</span> <br />
-                            <Link href="/doris-rueggeberg" >
+                            <Link href="/vision">
+                                <span>Vision</span>
+                            </Link>
+                            <br />
+                            <Link href="/doris-rueggeberg">
                                 <span className="text-white/40">Doris Rüggeberg</span>
                             </Link>
                         </div>

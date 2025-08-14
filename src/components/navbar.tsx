@@ -162,9 +162,9 @@ export default function Navbar() {
                     <Image
                         src="/logo-black.png"
                         alt="logo"
-                        width={40}
-                        height={40}
-                        className={`size-12 ${navbarTheme.logo} rounded-full object-cover`}
+                        width={48}
+                        height={48}
+                        className={` ${navbarTheme.logo} rounded-full  object-cover`}
                     />
                 </Link>
 
