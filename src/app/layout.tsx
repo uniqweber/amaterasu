@@ -4,8 +4,9 @@ import LenisWrapper from "@/components/ui/lenis-wrapper";
 import Wrapper from "@/components/ui/wrapper";
 
 export const metadata: Metadata = {
-    title: "Amaterasu - Empower your mental health journey",
-    description: "Amaterasu is a physics cognition lab working at the intersection of technology and nature to transform mental health.",
+    title: "Doris Rüggeberg - Empower your choices with universal wisdom",
+    description:
+        "Doris Rüggeberg empowers leaders and creatives through psychological, systemic, and cosmic insight to make clear, aligned, and strategic life choices",
 };
 
 export default function RootLayout({
