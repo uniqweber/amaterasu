@@ -22,7 +22,7 @@ export default function Vision() {
                     Vision
                 </h4>
                 <BlurText
-                    text="We empower human potential by merging cosmic perspective with actionable strategy, fostering a state of resilience in which challenges are not merely endured, but transformed into catalysts for resilience and growth."
+                    text="Empowering human potential by merging cosmic perspective with actionable strategy, fostering a state of resilience in which challenges are not merely endured, but transformed into catalysts for resilience and growth."
                     delay={30}
                     animateBy="words"
                     direction="bottom"
